@@ -16,7 +16,7 @@ import com.luisburgos.staticlist.holders.SwitchItemViewHolder;
 
 import java.util.List;
 
-import static com.luisburgos.staticlist.ActivityUtils.checkNotNull;
+import static com.luisburgos.staticlist.StaticListUtils.checkNotNull;
 
 public class StaticListRecyclerViewAdapter extends RecyclerView.Adapter<BaseStaticListItemViewHolder> {
 

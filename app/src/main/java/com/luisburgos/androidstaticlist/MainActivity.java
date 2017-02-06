@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainContainerFragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (mainContainerFragment == null) {
-            mainContainerFragment = DemoContainerFragment.newInstance();
+            mainContainerFragment = MyContainerFragment.newInstance();
             ActivityUtils.addFragmentToActivity(
                     getSupportFragmentManager(), mainContainerFragment, R.id.container
             );

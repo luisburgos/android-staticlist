@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 25
@@ -30,4 +32,85 @@ dependencies {
 
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile "com.android.support:design:25.1.0"
+}
+
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = 'com.luisburgos'
+version = '0.1.0'
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'staticlist'
+            description 'A library for emulate static list from iOS'
+            url 'https://github.com/LuisBurgos/android-staticlist'
+            inceptionYear '2017'
+
+            packaging 'aar'
+            groupId 'com.luisburgos'
+            artifactId 'staticlist'
+            version '0.1.0'
+
+            licenses {
+                license {
+                    name 'Apache-2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0'
+                }
+            }
+            scm {
+                connection 'https://github.com/LuisBurgos/android-staticlist.git'
+                url 'https://github.com/LuisBurgos/android-staticlist'
+
+            }
+            developers {
+                developer {
+                    id = 'luisburgos'
+                    name 'Luis'
+                }
+            }
+        }
+    }
+}
+
+Properties bintrayProperties = new Properties()
+bintrayProperties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
+bintray {
+    user = bintrayProperties.getProperty('user')
+    key = bintrayProperties.get('key')
+    configurations = ['archives']
+    pkg {
+        repo="staticlist"
+        name = 'staticlist'
+        userOrg = 'luisburgos'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/LuisBurgos/android-staticlist.git'
+        publish = true
+        version {
+            name = '0.1.0'
+            desc = 'Android Static List 0.1.0'
+            released = new Date()
+            vcsTag = 'v0.1.0'
+        }
+    }
 }
