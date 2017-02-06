@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="staticListComponentColorPrimary">?attr/colorPrimary</color>
+    <color name="staticListComponentColorPrimaryText">?attr/colorPrimaryDark</color>-->
+
+    <color name="staticListItemBackgroundColor">#FFFFFF</color>
+    <color name="staticListComponentColorPrimaryText">#000000</color>
+
+</resources>

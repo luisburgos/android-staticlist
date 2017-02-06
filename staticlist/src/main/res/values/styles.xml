@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StaticListItemTile">
+        <item name="android:textColor">@color/staticListComponentColorPrimaryText</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical|start</item>
+        <item name="android:paddingLeft">16dp</item>
+    </style>
+</resources>
